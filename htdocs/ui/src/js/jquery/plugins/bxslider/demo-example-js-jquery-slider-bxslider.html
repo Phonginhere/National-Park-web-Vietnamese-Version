@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bxslider demo by Phuong</title>
+
+<script src="jquery.min.js"></script>
+<script src="jquery.bxslider.min.js"></script>
+<link href="jquery.bxslider.css"     rel="stylesheet" />
+
+</head>
+<body>
+<div class="row">
+
+        <ul class="bxslider">
+            <li>
+                <img src="images/blue.jpg" />
+            </li>
+            <li>
+
+                <img src="images/purple.jpg" />
+            </li>
+            <li>
+
+                <img src="images/red.jpg" />
+            </li>
+            
+        </ul>
+        <script type="text/javascript">
+            //jQuery(document).ready(function () {
+                jQuery('.bxslider').bxSlider({
+                	//pager: true,
+        	        controls: true,
+        	        slideMargin: 0,
+        	        minSlides: 1,
+        	        //maxSlides: 3,
+        	        slideWidth: 1300,
+        	        slideHeight: 600,
+        	        auto: true
+                });
+            //});
+        </script>
+
+</div>
+</body>
+</html>

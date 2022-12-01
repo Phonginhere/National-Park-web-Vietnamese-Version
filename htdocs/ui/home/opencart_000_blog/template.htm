@@ -1,0 +1,338 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0026)https://demo.opencart.com/ -->
+<!--[if IE]><![endif]--><!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]--><!--[if IE 9 ]><html dir="ltr" lang="en" class="ie9"><![endif]--><!--[if (gt IE 9)|!(IE)]><!--><HTML 
+lang="en" dir="ltr"><!--<![endif]--><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="UTF-8"> 
+<META name="viewport" content="width=device-width, initial-scale=1"> <TITLE>The 
+OpenCart demo store</TITLE> 
+<META name="description" content="The OpenCart demo store"> 
+<META name="keywords" content="opencart,demo,store,ecommerce"> 
+<META http-equiv="X-UA-Compatible" content="IE=edge"> <LINK href="https://demo.opencart.com/image/catalog/cart.png" 
+rel="icon"> 
+<SCRIPT src="template_files/jquery-2.1.1.min.js" type="text/javascript"></SCRIPT>
+ <LINK href="template_files/bootstrap.min.css" rel="stylesheet" media="screen"> 
+<SCRIPT src="template_files/bootstrap.min.js" type="text/javascript"></SCRIPT>
+ <LINK href="template_files/font-awesome.min.css" rel="stylesheet" 
+type="text/css"> <LINK href="template_files/css.css" rel="stylesheet" type="text/css"> 
+<LINK href="template_files/stylesheet.css" rel="stylesheet"> <LINK href="template_files/flexslider.css" 
+rel="stylesheet" type="text/css" media="screen"> 
+<SCRIPT src="template_files/common.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="template_files/jquery.flexslider-min.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.16384"></HEAD> 
+<BODY class="common-home"><NAV id="top">
+<DIV class="container">
+<DIV class="pull-left">
+<FORM id="currency" action="https://demo.opencart.com/index.php?route=common/currency/currency" 
+enctype="multipart/form-data" method="post">
+<DIV class="btn-group"><BUTTON class="btn btn-link dropdown-toggle" data-toggle="dropdown"><STRONG>$</STRONG> 
+<SPAN class="hidden-xs hidden-sm hidden-md">Currency</SPAN> <I class="fa fa-caret-down"></I></BUTTON> 
+<UL class="dropdown-menu">
+  <LI><BUTTON name="EUR" class="currency-select btn btn-link btn-block" type="button">€ 
+  Euro</BUTTON></LI>
+  <LI><BUTTON name="GBP" class="currency-select btn btn-link btn-block" type="button">£ 
+  Pound Sterling</BUTTON></LI>
+  <LI><BUTTON name="USD" class="currency-select btn btn-link btn-block" type="button">$ 
+  US Dollar</BUTTON></LI></UL></DIV><INPUT name="code" type="hidden"> <INPUT name="redirect" type="hidden" value="https://demo.opencart.com/index.php?route=common/home"> 
+</FORM></DIV>
+<DIV class="nav pull-right" id="top-links">
+<UL class="list-inline">
+  <LI><A href="https://demo.opencart.com/index.php?route=information/contact"><I 
+  class="fa fa-phone"></I></A> <SPAN class="hidden-xs hidden-sm hidden-md">+852 
+  24990996</SPAN></LI>
+  <LI class="dropdown"><A title="My Account" class="dropdown-toggle" href="https://demo.opencart.com/index.php?route=account/account" 
+  data-toggle="dropdown"><I class="fa fa-user"></I> <SPAN class="hidden-xs hidden-sm hidden-md">My 
+  Account</SPAN> <SPAN class="caret"></SPAN></A> 
+  <UL class="dropdown-menu dropdown-menu-right">
+    <LI><A 
+    href="https://demo.opencart.com/index.php?route=account/register">Register</A></LI>
+    <LI><A 
+    href="https://demo.opencart.com/index.php?route=account/login">Login</A></LI></UL></LI>
+  <LI><A title="Wish List (0)" id="wishlist-total" href="https://demo.opencart.com/index.php?route=account/wishlist"><I 
+  class="fa fa-heart"></I> <SPAN class="hidden-xs hidden-sm hidden-md">Wish List 
+  (0)</SPAN></A></LI>
+  <LI><A title="Shopping Cart" href="https://demo.opencart.com/index.php?route=checkout/cart"><I 
+  class="fa fa-shopping-cart"></I> <SPAN 
+  class="hidden-xs hidden-sm hidden-md">Shopping Cart</SPAN></A></LI>
+  <LI><A title="Checkout" href="https://demo.opencart.com/index.php?route=checkout/checkout"><I 
+  class="fa fa-share"></I> <SPAN 
+  class="hidden-xs hidden-sm hidden-md">Checkout</SPAN></A></LI></UL></DIV></DIV></NAV><HEADER>
+<DIV class="container">
+<DIV class="row">
+<DIV class="col-sm-4">
+<DIV id="logo"><A 
+href="https://demo.opencart.com/index.php?route=common/home"><IMG title="The OpenCart demo store" 
+class="img-responsive" alt="The OpenCart demo store" 
+src="template_files/logo.png"></A> </DIV></DIV>
+<DIV class="col-sm-5">
+<DIV class="input-group" id="search"><INPUT name="search" class="form-control input-lg" type="text" placeholder="Search" value=""> 
+<SPAN class="input-group-btn"><BUTTON class="btn btn-default btn-lg" type="button"><I 
+class="fa fa-search"></I></BUTTON> </SPAN> </DIV></DIV>
+<DIV class="col-sm-3">
+<DIV class="btn-group btn-block" id="cart"><BUTTON class="btn btn-inverse btn-block btn-lg dropdown-toggle" 
+type="button" data-toggle="dropdown" data-loading-text="Loading..."><I class="fa fa-shopping-cart"></I> 
+<SPAN id="cart-total">0 item(s) - $0.00</SPAN></BUTTON>
+<UL class="dropdown-menu pull-right">
+  <LI>
+  <P class="text-center">Your shopping cart is 
+empty!</P></LI></UL></DIV></DIV></DIV></DIV></HEADER>
+<DIV class="container"><NAV class="navbar" id="menu">
+<DIV class="navbar-header"><SPAN class="visible-xs" 
+id="category">Categories</SPAN><BUTTON class="btn btn-navbar navbar-toggle" 
+type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"><I 
+class="fa fa-bars"></I></BUTTON> </DIV>
+<DIV class="collapse navbar-collapse navbar-ex1-collapse">
+<UL class="nav navbar-nav">
+  <LI class="dropdown"><A class="dropdown-toggle" href="https://demo.opencart.com/index.php?route=product/category&amp;path=20" 
+  data-toggle="dropdown">Desktops</A>
+  <DIV class="dropdown-menu">
+  <DIV class="dropdown-inner">
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=20_26">PC 
+    (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=20_27">Mac 
+    (1)</A></LI></UL></DIV><A class="see-all" href="https://demo.opencart.com/index.php?route=product/category&amp;path=20">See 
+  All Desktops</A></DIV></LI>
+  <LI class="dropdown"><A class="dropdown-toggle" href="https://demo.opencart.com/index.php?route=product/category&amp;path=18" 
+  data-toggle="dropdown">Laptops &amp; Notebooks</A>
+  <DIV class="dropdown-menu">
+  <DIV class="dropdown-inner">
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=18_46">Macs 
+    (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=18_45">Windows 
+    (0)</A></LI></UL></DIV><A class="see-all" href="https://demo.opencart.com/index.php?route=product/category&amp;path=18">See 
+  All Laptops &amp; Notebooks</A></DIV></LI>
+  <LI class="dropdown"><A class="dropdown-toggle" href="https://demo.opencart.com/index.php?route=product/category&amp;path=25" 
+  data-toggle="dropdown">Components</A>
+  <DIV class="dropdown-menu">
+  <DIV class="dropdown-inner">
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=25_29">Mice 
+    and Trackballs (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=25_28">Monitors 
+    (2)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=25_30">Printers 
+    (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=25_31">Scanners 
+    (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=25_32">Web 
+    Cameras (0)</A></LI></UL></DIV><A class="see-all" href="https://demo.opencart.com/index.php?route=product/category&amp;path=25">See 
+  All Components</A></DIV></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=57">Tablets</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=17">Software</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=24">Phones 
+  &amp; PDAs</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=33">Cameras</A></LI>
+  <LI class="dropdown"><A class="dropdown-toggle" href="https://demo.opencart.com/index.php?route=product/category&amp;path=34" 
+  data-toggle="dropdown">MP3 Players</A>
+  <DIV class="dropdown-menu">
+  <DIV class="dropdown-inner">
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_43">test 
+    11 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_44">test 
+    12 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_47">test 
+    15 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_48">test 
+    16 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_49">test 
+    17 (0)</A></LI></UL>
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_50">test 
+    18 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_51">test 
+    19 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_52">test 
+    20 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_53">test 
+    21 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_54">test 
+    22 (0)</A></LI></UL>
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_55">test 
+    23 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_56">test 
+    24 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_38">test 
+    4 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_37">test 
+    5 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_39">test 
+    6 (0)</A></LI></UL>
+  <UL class="list-unstyled">
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_40">test 
+    7 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_41">test 
+    8 (0)</A></LI>
+    <LI><A href="https://demo.opencart.com/index.php?route=product/category&amp;path=34_42">test 
+    9 (0)</A></LI></UL></DIV><A class="see-all" href="https://demo.opencart.com/index.php?route=product/category&amp;path=34">See 
+  All MP3 Players</A></DIV></LI></UL></DIV></NAV></DIV>
+<DIV class="container">
+<DIV class="row">
+<DIV class="col-sm-12" id="content">
+<DIV class="flexslider" id="slideshow0">
+<UL class="slides">
+  <LI><IMG class="img-responsive" alt="MacBookAir" src="template_files/MacBookAir-1140x380.jpg"></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=product/product&amp;path=57&amp;product_id=49"><IMG 
+  class="img-responsive" alt="iPhone 6" 
+  src="template_files/iPhone6-1140x380.jpg"></A></LI></UL></DIV>
+<SCRIPT type="text/javascript"><!--
+$('#slideshow0').flexslider({
+	animation: 'slide',
+	animationLoop: true,
+	itemWidth: 1140});
+--></SCRIPT>
+
+<H3>Featured</H3>
+<DIV class="row product-layout">
+<DIV class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<DIV class="product-thumb transition">
+<DIV class="image"><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43"><IMG 
+title="MacBook" class="img-responsive" alt="MacBook" src="template_files/macbook_1-200x200.jpg"></A></DIV>
+<DIV class="caption">
+<H4><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=43">MacBook</A></H4>
+<P>Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds 
+up to 2.1..</P>
+<P class="price">$602.00 <SPAN class="price-tax">Ex Tax: 
+$500.00</SPAN></P></DIV>
+<DIV class="button-group"><BUTTON onclick="cart.add('43');" type="button"><I 
+class="fa fa-shopping-cart"></I> <SPAN class="hidden-xs hidden-sm hidden-md">Add 
+to Cart</SPAN></BUTTON> <BUTTON title="Add to Wish List" onclick="wishlist.add('43');" 
+type="button" data-toggle="tooltip"><I class="fa fa-heart"></I></BUTTON> <BUTTON 
+title="Compare this Product" onclick="compare.add('43');" type="button" 
+data-toggle="tooltip"><I class="fa fa-exchange"></I></BUTTON> </DIV></DIV></DIV>
+<DIV class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<DIV class="product-thumb transition">
+<DIV class="image"><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=40"><IMG 
+title="iPhone" class="img-responsive" alt="iPhone" src="template_files/iphone_1-200x200.jpg"></A></DIV>
+<DIV class="caption">
+<H4><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=40">iPhone</A></H4>
+<P>iPhone is a revolutionary new mobile phone that allows you to make a call by 
+simply tapping a nam..</P>
+<P class="price">$123.20 <SPAN class="price-tax">Ex Tax: 
+$101.00</SPAN></P></DIV>
+<DIV class="button-group"><BUTTON onclick="cart.add('40');" type="button"><I 
+class="fa fa-shopping-cart"></I> <SPAN class="hidden-xs hidden-sm hidden-md">Add 
+to Cart</SPAN></BUTTON> <BUTTON title="Add to Wish List" onclick="wishlist.add('40');" 
+type="button" data-toggle="tooltip"><I class="fa fa-heart"></I></BUTTON> <BUTTON 
+title="Compare this Product" onclick="compare.add('40');" type="button" 
+data-toggle="tooltip"><I class="fa fa-exchange"></I></BUTTON> </DIV></DIV></DIV>
+<DIV class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<DIV class="product-thumb transition">
+<DIV class="image"><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=42"><IMG 
+title='Apple Cinema 30"' class="img-responsive" alt='Apple Cinema 30"' src="template_files/apple_cinema_30-200x200.jpg"></A></DIV>
+<DIV class="caption">
+<H4><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=42">Apple 
+Cinema 30"</A></H4>
+<P>The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel 
+resolution. Designed sp..</P>
+<P class="price"><SPAN class="price-new">$110.00</SPAN> <SPAN 
+class="price-old">$122.00</SPAN> <SPAN class="price-tax">Ex Tax: 
+$90.00</SPAN></P></DIV>
+<DIV class="button-group"><BUTTON onclick="cart.add('42');" type="button"><I 
+class="fa fa-shopping-cart"></I> <SPAN class="hidden-xs hidden-sm hidden-md">Add 
+to Cart</SPAN></BUTTON> <BUTTON title="Add to Wish List" onclick="wishlist.add('42');" 
+type="button" data-toggle="tooltip"><I class="fa fa-heart"></I></BUTTON> <BUTTON 
+title="Compare this Product" onclick="compare.add('42');" type="button" 
+data-toggle="tooltip"><I class="fa fa-exchange"></I></BUTTON> </DIV></DIV></DIV>
+<DIV class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<DIV class="product-thumb transition">
+<DIV class="image"><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=30"><IMG 
+title="Canon EOS 5D" class="img-responsive" alt="Canon EOS 5D" src="template_files/canon_eos_5d_1-200x200.jpg"></A></DIV>
+<DIV class="caption">
+<H4><A href="https://demo.opencart.com/index.php?route=product/product&amp;product_id=30">Canon 
+EOS 5D</A></H4>
+<P>Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR 
+category', while we'r..</P>
+<P class="price"><SPAN class="price-new">$98.00</SPAN> <SPAN 
+class="price-old">$122.00</SPAN> <SPAN class="price-tax">Ex Tax: 
+$80.00</SPAN></P></DIV>
+<DIV class="button-group"><BUTTON onclick="cart.add('30');" type="button"><I 
+class="fa fa-shopping-cart"></I> <SPAN class="hidden-xs hidden-sm hidden-md">Add 
+to Cart</SPAN></BUTTON> <BUTTON title="Add to Wish List" onclick="wishlist.add('30');" 
+type="button" data-toggle="tooltip"><I class="fa fa-heart"></I></BUTTON> <BUTTON 
+title="Compare this Product" onclick="compare.add('30');" type="button" 
+data-toggle="tooltip"><I class="fa fa-exchange"></I></BUTTON> 
+</DIV></DIV></DIV></DIV>
+<DIV class="flexslider carousel" id="carousel0">
+<UL class="slides">
+  <LI><IMG class="img-responsive" alt="Disney" src="template_files/disney-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Coca Cola" src="template_files/cocacola-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Nintendo" src="template_files/nintendo-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Burger King" src="template_files/burgerking-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Starbucks" src="template_files/starbucks-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Canon" src="template_files/canon-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Sony" 
+  src="template_files/sony-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="RedBull" src="template_files/redbull-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="NFL" 
+  src="template_files/nfl-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Harley Davidson" src="template_files/harley-130x100.png"></LI>
+  <LI><IMG class="img-responsive" alt="Dell" 
+  src="template_files/dell-130x100.png"></LI></UL></DIV>
+<SCRIPT type="text/javascript"><!--
+$(window).load(function() {
+$('#carousel0').flexslider({
+	animation: 'slide',
+	itemWidth: 130,
+	itemMargin: 100,
+	minItems: 2,
+    maxItems: 4
+});});
+--></SCRIPT>
+</DIV></DIV></DIV><FOOTER>
+<DIV class="container">
+<DIV class="row">
+<DIV class="col-sm-3">
+<H5>Information</H5>
+<UL class="list-unstyled">
+  <LI><A href="https://demo.opencart.com/index.php?route=information/information&amp;information_id=4">About 
+  Us</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=information/information&amp;information_id=6">Delivery 
+  Information</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=information/information&amp;information_id=3">Privacy 
+  Policy</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=information/information&amp;information_id=5">Terms 
+  &amp; Conditions</A></LI></UL></DIV>
+<DIV class="col-sm-3">
+<H5>Customer Service</H5>
+<UL class="list-unstyled">
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=information/contact">Contact 
+  Us</A></LI>
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=account/return/add">Returns</A></LI>
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=information/sitemap">Site 
+  Map</A></LI></UL></DIV>
+<DIV class="col-sm-3">
+<H5>Extras</H5>
+<UL class="list-unstyled">
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=product/manufacturer">Brands</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=account/voucher">Gift 
+  Vouchers</A></LI>
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=affiliate/account">Affiliates</A></LI>
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=product/special">Specials</A></LI></UL></DIV>
+<DIV class="col-sm-3">
+<H5>My Account</H5>
+<UL class="list-unstyled">
+  <LI><A href="https://demo.opencart.com/index.php?route=account/account">My 
+  Account</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=account/order">Order 
+  History</A></LI>
+  <LI><A href="https://demo.opencart.com/index.php?route=account/wishlist">Wish 
+  List</A></LI>
+  <LI><A 
+  href="https://demo.opencart.com/index.php?route=account/newsletter">Newsletter</A></LI></UL></DIV></DIV>
+<HR>
+
+<P>Powered By <A href="http://www.opencart.com/">OpenCart</A><BR> The OpenCart 
+demo store © 2017</P></DIV></FOOTER></BODY></HTML>

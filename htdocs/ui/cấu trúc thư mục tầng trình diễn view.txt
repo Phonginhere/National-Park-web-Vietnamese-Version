@@ -1,0 +1,44 @@
+/web/view/admin/
+         /adminlogin/themes/demo
+         				   /flat
+         				   /skeuomorphism
+         				   /material
+         				   /classic
+         				   /elegant
+         /home/themes/opencart/demo
+         				      /50677/fonts
+         				            /image
+         				            /layout_files
+         				            /template
+         				            .layout.htm
+         				            .layout.php
+         				      /53998
+         			 /prestashop
+         			 /virtuemart
+              .common.js
+              .layout-home-head.php
+         /src/css/bootstrap
+                 /font-awesome
+                 /lwis
+             /fonts
+             /images
+             /js/datetimepicker
+                /jquery/plugins
+                       /ui
+-------------------------------------------------
+view chia ra 3 phần: admin, adminlogin, home
+mỗi phần nên có: /themes, /src
+trong /themes có chia ra các loại: opencart, prestashop, virtuemart, v.v...
+trong mỗi loại như /opencart thì có các loại con được đánh số.
+
+thư mục /template nên là thư mục sâu bên trong /themes
+hiện nay do phần admin đang làm đơn giản nên ko tuân theo luật này.
+(trong admin thì chỉ có chuyển mạch layout, còn ruột giống nhau hết để sv đỡ phải làm nhiều)
+
+Chú Ý: Trong các thư mục src/css, src/js, src/fonts chỉ nên chứa các thư mục thư viện
+chứ không nên chứa các thư mục module như admin, adminlogin, home.
+
+Những module đó nên có src riêng.
+    
+Trong một mẫu thiết kế thì có thể có nhiều layout, ví dụ: layot 2 cột,
+layout 1 cột. Lúc đó cần tạo riêng một thư mục tên là /layout.

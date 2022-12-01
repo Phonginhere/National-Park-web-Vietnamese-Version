@@ -1,0 +1,5 @@
+template và themes để cùng cấp vì các themes ở đây dùng chung template
+cho nó đỡ phải code lại nhiều.
+
+Bản thân css của các admin layout cũng khiến cho template thay đổi diện mạo
+nên tạm thời chưa phải code riêng template cho từng themes.

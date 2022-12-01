@@ -1,0 +1,9 @@
+/*Common CSS shared by home themes */
+/* add the red * before label of a required input */
+div.required .control-label::before 
+{
+	color: rgb(255, 0, 0); 
+	font-weight: bold; 
+	content: "* ";
+}
+

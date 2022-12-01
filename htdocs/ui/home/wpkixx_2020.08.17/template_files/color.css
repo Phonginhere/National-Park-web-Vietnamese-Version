@@ -1,0 +1,79 @@
+.login-register > a,
+.login-popup button,
+.news-title,
+.category,
+.readmore i,
+.branches li.active a,
+.social li a:hover,
+.progress-caro .progress-bar,
+.owl-dot.active,
+.contact-form form button,
+.trend-meta > a,
+.tag > li a:hover,
+.subscribe-us button,
+.sidebar-login form button,
+.error-404 > a,
+.pagination > li a:hover,
+.pagination li.active a,
+.sec-heading::before,
+.tags-cloud > li a:hover,
+.owl-next:hover:before,
+.owl-prev:hover:before,
+.mega-menu1 .nav.nav-tabs > li:hover a,
+.mega-menu1 .nav.nav-tabs > li.active a
+{
+	
+	background:#f44336;	
+}
+
+.branches li.active a{
+	background:#f44336 !important;
+}
+
+
+.login-popup form > a,
+header.style1 .menu-bar.light nav > ul > li > a:hover,
+
+.featured-meta h2 a:hover,
+.post-data h2 a:hover,
+.list-small-meta > h2 a:hover,
+.post-detail > h2:hover,
+.list-post-detail h2:hover,
+.stars-rank li i,
+.ftr-popu-categories li a:hover,
+.recent-meta h2 > a:hover,
+.copyright h5 span,
+.wid-tab-post > h5 a:hover,
+.single-post-info > span a b,
+.related-title a:hover,
+.about-some-video > h4,
+.trend-meta > h4 a:hover,
+.single-related > h3:hover,
+.forget,
+.forget:hover,
+.news-caro li a:hover,
+.bread-crumb ul li:last-child a,
+.hl-post-meta > span,
+.hl-post-meta > h3 a:hover,
+.post-meta3 li.admin a,
+.hl-trend-meta h5 a:hover ,
+.pagination > li a:hover,
+.comment-detail .reply:hover,
+.coming-meta h4 span,
+header.style1 .menu-bar.light nav ul li a:hover,
+.archive-meta > h4:hover,
+.insta-title > span
+{
+	
+	color:#f44336;	
+}
+
+.readmore,
+.owl-dot.active,
+.tag > li a:hover,
+.pagination li.active a,
+aside .widget-title > h4,
+.tags-cloud > li a:hover
+{
+	border-color:#f44336;
+}

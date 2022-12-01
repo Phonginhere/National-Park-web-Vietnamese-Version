@@ -1,0 +1,473 @@
++------------------------------------------------------------------------------+
+|1. SAO CHÉP MẪU THIẾT KẾ 												       |
++------------------------------------------------------------------------------+
+- Lên trang:
+		https://www.templatemonster.com/opencart-templates.php
+để tìm một mẫu phù hợp, chú ý rằng các mẫu thiết kế trên trang này tương thích với hệ thống này.
+Nên chọn mẫu mà slide ảnh chi tiết sản phẩm nằm theo phương ngang (dễ sửa hơn)
+
+- Lưu mẫu thiết kế gốc vào thư mục:
+	/web/ui/adminlogin/themes/tên mẫu thiết kế/
+Ví dụ: 
+	/web/ui/adminlogin/themes/c1610i/
+(cũng có thể dùng 'x_ui' thay vì 'ui')
+
+Công Cụ Sao Chép: Internet Explorer 11.
+-Sau khi sao chép xong thì bên trong thư mục mẫu thiết kế sẽ có:
+	/template_files		(thư mục chứa css, javascript, ảnh cho mẫu thiết kế)
+	.template.htm	    (mã html của mẫu thiết kế)
+
+-Test thử mẫu thiết kế tĩnh template.htm trên trình duyệt xem có giống bản gốc hay không
+	http://localhost:82/web/ui/home/themes/opencart/50677/template.htm
++------------------------------------------------------------------------------+
+|2. TẠO BỐ CỤC ĐỘNG (DYNAMIC LAYOUT) 										   |
++------------------------------------------------------------------------------+
+- Tạo file layout.php với nội dung giống hệt template.htm
+(copy & paste template.htm và đổi đuôi sang php)
+- Làm đẹp mã nguồn bằng các công cụ như html beautifier/formatter, js beautifier
+		http://jsbeautifier.org/
+		http://www.cleancss.com/html-beautify/
+		
+- Gọi các tệp php cần thiết vào layout.php: 
+- tệp php chung cho toàn hệ thống:
+	<?php $arr = explode('\\', __FILE__); include_once($_SERVER["DOCUMENT_ROOT"].'/'.$arr[3].'/configs.php'); ?>
+- tệp php chung cho mọi layout home:
+	<?php include_once DIR_UI."home/layout-home-head.php"?>
+(nên thế nó vào chỗ của thẻ title và link to favicon, hoặc xóa bỏ 2 thẻ này đi)
+
+- Sửa các đường dẫn tương đối thành bán tuyệt đối (href="", src="")
+Ví dụ: 
+		"./template_files
+sửa thành
+		"<?php echo URL_UI_HOME_THEMES; ?>template_files
+
+- Comment lại đoạn mã gọi favicon của thiết kế mẫu, để dùng favicon của riêng mình
+đã được gọi trong layout-home-head.php
+	<link href="https://livedemo00.template-help.com/opencart_50479/image/data/favicon.png" rel="icon"> -->
+
+- viết đè phần javascript giỏ hàng bởi vì hệ thống đường dẫn của mình khác so với thiết kế mẫu của họ:
+	
+	<script src="<?php echo URL_UI_HOME_THEMES;?>view/override.js"></script>
+	
+cách làm: khi copy view từ bản mẫu 
+	/web/ui/home/opencart/0000/view 
+thì file override.js đã có rồi, chỉ việc vào sửa lại chút xíu là được.
+Mình có thể mở file common.js của thiết kế mẫu ra để sửa theo, đặc biệt là hộp thoại 
+thông báo thêm mới thành công sản phẩm vào giỏ hàng.
+Chú ý: Nếu như chức năng 'remove' sản phẩm khỏi giỏ hàng không hoạt động thì có lẽ
+phải comment toàn bộ đoạn:
+	<SCRIPT src="<?php echo URL_UI_HOME_THEMES ?>template_files/common.js" type="text/javascript"></SCRIPT>
+của hệ thống.
+
+Mẫu thiết kế 45570 cho thấy rằng trong bản mẫu opencart/0000 cần phải có:
+/font	/fonts	/image	/images
++------------------------------------------------------------------------------+
+|3. ÁP ĐẶT BỐ CỤC ĐỘNG (DYNAMIC LAYOUT) LÊN TOÀN HỆ THỐNG 			           |
++------------------------------------------------------------------------------+
+	define('PATH_UI', 'ui/'); 
+	define('PATH_HOME_THEMES', 'home/themes/opencart/1610/');
+	HOẶC:
+	define('PATH_UI', 'x_ui/'); 
+	define('PATH_HOME_THEMES', 'home/themes/opencart/1610/');
+	
+- Khi chuyển menu category sang động thì phải test cả menu cấp 3
+(xem lại chủ đề nào có menu cấp 3???)
+- Thay số điện thoại, thay logo.
+- thay cả menu cho bản di động nữa.
++------------------------------------------------------------------------------+
+|4. WEB CONTENT 			           									       |
++------------------------------------------------------------------------------+
+- Khoét ruột và thay thế bằng đoạn mã gọi nội dung riêng:
+
+	<?php include_once($web_content) ?>    
+
+Chú ý: thông thường nội dung riêng hay được đặt trong thẻ 
+	<section></section>
+Cách thay ruột home sang php động:
+- thay slide show trước.
+- thay đường dẫn cho nút scroll-to-top (để nguyên nó vẫn chạy, nhưng thôi cứ xóa đường dẫn gốc đi ???
+	<p id="back-top" style="display: block;">
+                            <a href="http://livedemo00.template-help.com/opencart_50677/#top"><span></span></a>
+                        </p>
+- chạy foreach để hiện loại (sản phẩm) nổi bật
+- chạy foreach kết hợp jquery bxslider để hiện các nhà sản xuất.
+- chạy foreach kết hợp jquery fancybox, colorbox để hiện các sản phẩm nổi bật (featured)
+(khoét ruột của 50677 tương đối dễ ^^)                         
+--------------------------------------------------------------------------
+Slideshow trang chủ: Nếu không sao chép được thì nên thay hết bằng jssor:
+	<!-- SLIDESHOW ẢNH TRANG CHỦ -->
+	<?php require_once DIR_UI."home/slideshows/slideshow-jssor_1.php"?>
+--------------------------------------------------------------------------
+banner loại sản phẩm:
+Muốn cho ảnh nền của loại sản phẩm( giới thiệu) phù hợp với themes
+thì phải chủ động vào loại sản phẩm đó và sửa ảnh đại diện của nó
+--------------------------------------------------------------------------        
+7. SẢN PHẨM NỔI BẬT: 
+Thay thế nội dung động cho khối html tĩnh: Featured Products	    
+	<?php foreach(productsFeatured() as $product ) { 
+		$product['name'];$product['thumb']; $product['description'];$product['price'];$product['product_id'];
+    }?>
+    
+    <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"></button>
+    (dễ quên không chuyển tĩnh thành động, ví dụ: cart.add('35') được để nguyên.)
+    
+Chú Ý:
+- Khống ché độ cao của phần mô tả để cho các sản phẩm nổi bật cao bằng nhau:
+		<div class="description" style="max-height:54px;overflow:hidden"><?php echo $product['description']; ?></div>
+- Thông tin của một sản phẩm nổi bật có thể bị lặp lại nhiều lần trong mã html
+ví dụ:<div class="quick-view1 preview"> chi tiết sản phẩm nổi bật </div>	
+---------------------------------------------------------------------------
+với 53398 thì phải sử dụng ảnh nền, hoặc là iframe mang tính chất workaround.
+Không hiểu sao nó ko chạy.
+
+<!-- Google Map -->
+	<div style="height: 450px;position: relative; background-color: rgb(229, 227, 223); 
+         overflow: hidden;" id="google-map" class="col-sm-12"></div>
+
+<iframe src="/<?php echo APP;?>/common/google-map.php" style="height: 450px; width: 100%;border-radius: 3px;border-top: 1px solid #efeeee;border-left: 1px solid #e9e8e8;border-right: 1px solid #bfbebe;border-bottom: 1px solid">
+</iframe>	
+    
+--------------------------------------------------------------------------    
+9. GIỎ HÀNG 
+Khoét bỏ đoạn mã html giỏ hàng trống và đặt sang file:
+	/web/themes/home/opencart/c1509g/view/common/view-cart.php
+Thông thường là thẻ:
+    <div id="cart" class="..."></div>
+Chỗ khoét bỏ được thay bằng đoạn mã động:
+	<?php include_once(DIR_UI_HOME_THEMES."view/common/view-cart.php");?>      
+	
+Nên xem file common.js gốc của giao diện mà bạn sao chép, để xem họ hiển thị
+'success message' ở chỗ nào thì bắt chước theo. ví dụ:
+	<script>
+		$('#content').parent().before('<di>');
+	</script>  	
+	
+Copy nội dung giỏ hàng trống của thiết kế gốc vào file view-cart-empty.php
+sau đó sửa lại nội dung tiếng anh thành tiếng việt.
+
+thêm sản phẩm vào giỏ hàng ở thiết kế gốc, rồi làm tương tự với file view-cart-products.php
+
+Nhiều khi viết thế này nó lại chạy:
+	<script>
+	// Không hiểu sao viết sự kiện click
+	// trên nút button bên trong #cart thì lại chết ???
+	$(function(){
+		$('#cart').click(function(){
+			$('#cart').addClass('open');
+		});
+	});
+	</script>
+--------------------------------------------------------------------------
+10. Trên thiết kế mẫu online, ví dụ:
+	http://livedemo00.template-help.com/opencart_50677/
+Thêm vào giỏ hàng khoảng 2 hoặc 3 sản phẩm sau đó tiếp tục copy đoạn mã html giỏ hàng
+đã có sản phẩm và đặt nó vào         
+	/web/themes/home/opencart/c1509g/view/common/view-cart.php
+Lúc  này mã nguồn trông như sau:
+<?php if (cartGetProductsWithFormat()) { ?>
+<div class="cart-position">
+	<table class="cart">
+    	<!-- bảng các sản phẩm trong giỏ hàng  -->
+	</table>
+</div>
+<?php } else { ?>
+<div class="cart-position">
+
+</div>
+<?php } ?>	    
+
+Chú ý: có thể dùng đoạn mã sau để test html tĩnh của giỏ hàng có sản phẩm:
+	<?php if (1||	cartGetProductsWithFormat()) { ?>
+
+--------------------------------
+Giỏ hàng: xem các file quan trọng sau đây:
+common.js; override.js; script.js
+trong file script.js có thể tìm thấy đoạn mã ẩn hiện thông báo thêm thành công giỏ hàng
+Nên copy đoạn mã này khi viết đè hàm cart.add() trong file override.js
+	
+11. Thay thế toàn bộ các nội dung tĩnh trong giỏ hàng "view-cart.php" thành nội dung động
+Ví dụ:
+2 item(s) - $318.50 --->	<?php echo cartGetTextCountAndTotal(); ?>
+
+Đường dẫn đến chi tiết sản phẩm:
+	href="<?php echo $product['href']; ?>"
+Ảnh sản phẩm:
+	<img src="<?php echo $product['thumb']; ?>" 
+          alt="<?php echo $product['name']; ?>" 
+          title="<?php echo $product['name']; ?>" />    
+So luong san pham:
+	<span class="quantity">x&nbsp;<?php echo $product['quantity']; ?></span>
+Tong gia tri cua so san pham:
+	<?php echo $product['total']; ?>
+Go bo san pham:
+	<div class="remove">
+    	<span onclick="cart.remove('<?php echo $product['key']; ?>');"><i class="fa fa-times-circle"></i>Remove</span>
+    </div>                  
+Tổng giá trị đơn hàng:
+	<?php echo cartGetTotalWithFormat(); ?>
+Chú ý: bỏ qua những thông tin như: Sub-Total, Eco-Tax, VAT     
+
+Các đường link liên quan giỏ hàng:
+	<a href="<?php echo urlCart(); ?>">
+    	<strong><i class="fa fa-shopping-cart"></i> Xem giỏ hàng</strong>
+    </a>
+    <a href="<?php echo urlCheckout(); ?>">
+    	<strong><i class="fa fa-share"></i> Checkout</strong>
+    </a>   
+-----
+Đặt các sản phẩm của giỏ hàng vào trong vòng for:
+	<table class="table table-striped">
+        <?php foreach (cartGetProductsWithFormat() as $product) { ?>
+-----------------------------------------------------------------------------
+SLIDE SHOW ẢNH
+
+Xem file 58898 script.js --> 53398/js
+-----------------------------------------------------------------------------
+SLIDE SHOW NHÀ SẢN XUẤT
+
++------------------------------------------------------------------------------+
+|CÁC CHÚ Ý QUAN TRỌNG 												           |
++------------------------------------------------------------------------------+
+Chú Ý: Nên copy mẫu thiết kế nào mà một layout sử dụng 
+chung cho tất cả các trang. Ví dụ như trang sau đây thì ko nên copy 
+vì nó dùng layout khác nhau cho trang chủ và trang sản phẩm:
+	https://livedemo00.template-help.com/opencart_52995/
+Luồng chương trình:
+layout-home.php ---> layout-home-head.php 
+Thiết kế mẫu: 
+nên chọn ra những cái giống với 50677: 
+	sử dụng colorbox cho preview ở trang chủ
+	image gallery dễ chỉnh sửa ở phần product-detail
+	
+	// slide ảnh chi tiết sản phẩm nằm theo phương ngang:
+	http://livedemo00.template-help.com/opencart_50677/ (OpenCart Compatibility: 	1.5.6.x)
+	https://livedemo00.template-help.com/opencart_50479 (saved)
+	https://livedemo00.template-help.com/opencart_46247 (saved)
+	https://livedemo00.template-help.com/opencart_45570 (saved)
+	https://livedemo00.template-help.com/opencart_52262
+	https://livedemo00.template-help.com/opencart_45557
+	https://livedemo00.template-help.com/opencart_47367 (độ tương phản không cao, màu sắc chủ đạo đơn giản quá: xám )
+    
+    // slide ảnh chi tiết sản phẩm nằm theo phương dọc (khó copy):
+    http://livedemo00.template-help.com/opencart_53398/
+    https://livedemo00.template-help.com/opencart_52931/
+    https://livedemo00.template-help.com/opencart_57577
+    https://livedemo00.template-help.com/opencart_59089/
+    https://www.templatemonster.com/demo/59003.html
+    
+(các mẫu 45557, 45570 giống nhau nên rất dễ copy sang nhau)    
+    
+    https://www.templatemonster.com/templates.php?pr=50543-50122-50
+    
+    Đẹp nhưng không cân xứng, khó copy; hoặc khó copy menu. Đừng chọn loại menu trượt mà nên là dropdown.
+    (mobile)
+    https://livedemo00.template-help.com/opencart_62184/
+    https://www.templatemonster.com/demo/62224.html
+    http://livedemo00.template-help.com/opencart_52995/
+    http://livedemo00.template-help.com/opencart_57976/ (Khó copy menu)
+    https://www.templatemonster.com/demo/46247.html
+    đẹp nhưng mà lại nên đen:
+    https://livedemo00.template-help.com/opencart_46914/index.php?route=common/home
+    
+    // đôi khi phải gọi layout riêng cho trang chủ,
+// ví dụ:
+// http://livedemo00.template-help.com/opencart_52995/
+
+keywords:
+	Save an entire webpage, with all images and css, into just one folder and one file, with wget?
+	
+BÀI HỌC KINH NGHIỆM: Khi copy thiết kế của họ thì phải tìm cách xóa đi các đoạn mã html/css được sinh
+ra bởi javascript/jquery plugins bởi vì chúng vốn dĩ ko có trong bản thiết kế PHP gốc.
+
+Mình cứ copy về mà nó không chạy được chính là vì vậy.
+
+Hay là: khi mình copy về thì nó là tĩnh, nhưng javascript của họ là bản được tham số hóa bằng PHP
+cho nên nó mới chết chương trình. Ví dụ: dùng javascript jquery fancybox, colorbox để view ảnh
+thì bọn nó dùng PHP vòng lặp, rồi cài mã PHP động vào.
+--------------------------------------------------------------------------
+1. LƯU THIẾT KẾ VÀO THƯ MỤC: 
+(nên dùng IE 11 vì nó giữ nguyên tên file css, js trong html gốc
+thậm chí IE còn lưu được cả giao diện chat với khách hàng olark
+)
+	/themes/home/ten_mau_thiet_ke/    
+Ví dụ: 
+	/themes/home/opencart/c1608g/layout.htm
+	/themes/home/opencart/c1608g/layout_files
+
+-lưu cả các ảnh, nội dung đa phương tiện về: 
+bước này xem ra cũng chẳng cần vì khi lưu bằng IE nó cũng đã làm ngon rồi.
+ 
+xem: download webpage and dependencies, including css images [closed]
+http://stackoverflow.com/questions/1581551/download-webpage-and-dependencies-including-css-images
+
+Right click > View page info (Xem thông tin về trang) > Select media tab (Đa phương tiện)
+>Highlight all files (Chọn toàn bộ) > Save as
+
+Kinh Nghiệm: vẫn fail không tải hết được, ví dụ:
+	https://livedemo00.template-help.com/opencart_50479/catalog/view/theme/theme425/image/up-arrow.png
+	https://livedemo00.template-help.com/opencart_50479/catalog/view/theme/theme425/image/bullets.png
+	https://livedemo00.template-help.com/opencart_50479/catalog/view/theme/theme425/image/camera_skins.png
+	https://livedemo00.template-help.com/opencart_50479/catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css
+	
+	fonts been trong:
+	http://static.livedemo00.template-help.com/opencart_53398/catalog/view/theme/theme532/stylesheet/material-design.css
+	
+Các đường dẫn ẩn cho menu dọc:
+	<P class="hidden" id="gl_path">catalog/view/theme/theme532/</P>
+	https://livedemo00.template-help.com/opencart_53398/catalog/view/theme/theme532/
+	https://livedemo00.template-help.com/opencart_53398/catalog/view/theme/theme532/js/jquery.easing.1.3.js
+	http://static.livedemo00.template-help.com/opencart_53398/catalog/view/theme/theme532/image/photoswipe-icons@2x.png
+	
+@bài toán: đầu vào là đường dẫn của file css, hãy liệt kê toàn bộ đường dẫn tuyệt đối
+	của các file ảnh được gọi trong file css đó.
+----------------------
+Một số mẫu thiết kế có kĩ thuật Javascript, css lắt léo khiến cho khi lưu về
+rồi thì nó ko chạy đúng nữa. Phải mò lại. Ví dụ mẫu thiết kế sau:
+
+	http://livedemo00.template-help.com/opencart_53398
+	
+nó cài đường dẫn <p id="gl_path" class="hidden">catalog/view/theme/theme532/</p>
+trong html head và dùng đường dẫn này làm cơ sở cho các lệnh include() trong file
+script.js.
+Thành thử khi lưu về nó ko chạy cho vì đường dẫn không còn đúng nữa.	
+---> phải thay gl_path bằng của mình.
+
+Lý tưởng nhất là:
+- Menu loại sản phẩm hoạt động tốt. (sổ xuống menu cấp 1 & 2)
+- Slide chạy được.
+- Giỏ hàng sổ xuống.
+
+Nên kiểm tra thêm cả bản thiết kế tĩnh của phần product-detail vì phần này
+có slide ảnh chi tiết rất khó copy trong một số tình huống.
+
+- Copy các thư mục image, fonts để khắc phục lỗi icon, font bị vỡ của font-awesome và bootstrap.	
+
+------------------------------
+- Test qua sẽ thấy icon bị vỡ, đường dẫn các file css còn nguyên,
+nhưng các thư viện jquery plugin bị thay đổi hết sang dạnh đánh số.
+-->phải tìm lại bản gốc của nó là cái gì ? js, css, image
+
+- các thư viện javascript, css cần thiết (jquery, bootstrap, fontawesome):
+	<!-- Thư viện css,javascript cơ sở thay thế cho đoạn mã title -->
+	<?php include_once DIR_APP."/themes/home/layout-home-head.php"?>	
+sau bước này thì các biểu tượng font-awesome hoặc bootstrap sẽ không bị vỡ nữa.
+-------------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+Đến đây thì slideshow ảnh trang chủ luôn bị lỗi, ko chạy. Đặc biệt là nếu họ sử dụng
+thư viện javascript camera (http://www.pixedelic.com/plugins/camera/)
+
+Làm thế nào để slide ảnh ở bản thiết kế tĩnh chạy trước, rồi mới chuyển sang động.
+Khi copy thiết kế thì nó đã có đủ css và js:
+	<link href="layout-home_files/camera.css" rel="stylesheet">
+	...
+	<script src="layout-home_files/camera.js"></script>
+	
+Nỗ Lực Khắc Phục: thay đoạn mã phức tạp của thiết kế gốc bằng đoạn mã đơn giản hơn
+được dạy trên trang chủ của thư viện đó:
+	http://www.pixedelic.com/plugins/camera/
+<script>
+	jQuery(function() {
+		jQuery('#camera_wrap_0').camera({
+		thumbnails: true
+		});
+	});
+</script>
+<div class="fluid_container">
+	<div class="camera_wrap camera_azure_skin" id="camera_wrap_0">
+		<div data-thumb="../images/slides/thumbs/bridge.jpg" data-src="../images/slides/bridge.jpg">
+		</div>
+		...	
+		</div><!-- #camera_wrap_1 -->
+	<div class="clear"></div>
+</div>
+
+LOẠI BỎ CÁC ĐOẠN JAVASCRIPT KHÔNG CẦN THIẾT:
+nhất là các đoạn mã phân tích hành vi người dùng của google cấy vào.
+- gỡ bỏ ứng dụng JavaScript Live Chat: (chưa cần thiết ở lúc này)
+xem: https://www.olark.com/api
+<!-- <script src="layout-home_files/application2.js" async="" defer="defer" data-cfasync="false"></script> -->
+
+<!-- <script charset="utf-8" async="" defer="true" src="layout-home_files/visits"></script> -->
+
+- tiếp tục comment đoạn mã javascript olark ở cuối trang: dùng chức năng tìm kiếm
+của eclipse (Ctrl + F) để tìm: window.olark
+
+- gỡ bỏ, hoặc comment lại các JavaScript liên quan đến google analytics:
+	google-analytics.com/ga.js
+	www.googletagmanager.com
+	
+- gỡ bỏ, hoặc comment lệnh gọi 'analytics.js': đây là kịch bản phân tích hành vi
+người dùng của Google, bỏ nó đi để tránh các lỗi thông dịch JavaScript.
+	(xem: https://developers.google.com/analytics/devguides/collection/analyticsjs/)
+	<script type="text/javascript" async="" src="layout-home_files/analytics.js"></script>
+	
+- gỡ bỏ nốt cả những cái sau đây liên quan đến phân tích tương tác người dùng:
+	ec.js
+    gtm.js
+    ga.js
+	cloudflare.js
+	
+@todo: viết chương trình tự động để comment hết cái đám này lại ???
+
+- Thư viện jQuery Plugin để zoom in/out ảnh: http://www.elevateweb.co.uk/image-zoom/configuration
+Nó được sử dụng trong file script.js của thiết kế.
+
+- Mở phần sau đây ra để thấy là mình còn thiếu nhiều thư viện JavaScript:
+	view-source:https://livedemo00.template-help.com/opencart_50479/
+	http://halodezigns.com/catalog/view/javascript/
+	
+- Đừng comment file bootstrap.js; bootstrap.css của nó vì sẽ bị lỗi hàm tooltip() trong script.js
+
+- Thư viện cho phép migrate từ jquery cũ lên mới:
+jquery-migrate-1.2.1.min.js
+
+
+CHÚ Ý CÁCH LÀM NHANH: Copy toàn bộ các ảnh cần thiết vào thư mục:
+	/web/x_themes/home/opencart/53398/image
+bởi vì toàn bộ các file css, javascript đã được copy về thư mục
+	53398/layout-home_files
+	
+Nó bị lỗi là do thiếu ảnh.
+
+- Đôi khi phải điều tra thẻ (inspect element) để xem nó thuộc jquery plugin nào, ví dụ
+		<a class="bx-next" href="#"><i class="fa fa-chevron-right"></i></a>
+là của jquery.bxslider.js
+-------------------------------------------------------------------------
+MENU: hiệu ứng dropdown hiện menu con khi di chuột vào:
+Bản OpenCart 50479 đã chạy menu khá tốt nhờ vào việc copy mã nguồn từ bản
+53398 sang:
+	<!-- kịch bản copy từ 53398/layout-home.htm -->
+    <script>
+		;(function ($) {
+			$(window).load(function () {
+				var o = $('.sf-menu');
+				o.superfish();
+				o.find('li a').each(function () {
+					if ($(location).attr('href').indexOf($(this).attr('href')) >= 0){
+						$(this).addClass('active');
+						return;
+					}
+				})
+				if (o.parents('aside').length){
+					var width = $('.container').outerWidth() - $('aside').outerWidth();
+					o.find('.sf-mega').each(function () {
+						$(this).width(width);
+					})
+				}
+			});
+		})(jQuery);
+	</script>
+--------------------------------------------------------------------------	
+Phát hiện ra là:
+- dùng ie 11 để lưu thiết kế thì hay hơn
+- phải tạo một trang riêng đầy đủ cho product-detail, nếu ko nó sẽ bị lỗi.
+- điều lạ là có mỗi IE có thể tải về mà giữ nguyên được slideshow ảnh chi tiết sản phẩm.
+Firefox không lưu được file .htm, nó chỉ lưu học liệu của trang chi tiết sản phẩm.
+Google Chrome thì bị hỏng slide.
+--------------------------------------------------------------------------  
+Phát hiện OpenCart 45570:
+	view-source:https://livedemo00.template-help.com/opencart_45570/catalog/view/javascript/jquery/colorbox/colorbox.css
+	https://livedemo00.template-help.com/opencart_45570/catalog/view/javascript/jquery/colorbox/images/loading.gif
+	https://livedemo00.template-help.com/opencart_45570/catalog/view/javascript/jquery/colorbox/images/controls.png
+	

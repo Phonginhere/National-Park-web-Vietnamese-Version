@@ -1,0 +1,84 @@
+HƯỚNG DẪN THIẾT KẾ GIAO DIỆN: ĐĂNG NHẬP TRANG QUẢN TRỊ
+(UI Guidelines on Admin Login)
+-----------------------------------------------------
+Thiết kế flat và material đều là thuộc phong cách tối giản minimalism,
+có điều là flat ko có hiệu ứng đổ bóng râm, và hoạt họa nhiều như material.
+
+Mọi thứ đều là 2D.
+
+Tất nhiên bạn có thể sử dụng ảnh nền trong thiết kế phẳng Flat, đặc biệt
+là các ảnh mờ (blur background-image)
+---------
+Chú Ý: 
+Nên Chọn mẫu Responsive cho cả 2 phong cách.
+---------
+Copy thiết kế của người khác (2018.05.25)
+- Gõ Google: html login form (theme) bootstrap responsive
+- Ví dụ: http://www.bootstrapzen.com/preview/433/
+- Mở đường dẫn gốc( frame source view) của thiết kế trên trình duyệt IE:
+	http://www.bootstrapzen.com/wp-content/uploads/433/preview/index.html
+	
+Chú Ý: Trình duyệt IE rất thích hợp cho việc copy thiết kế của người khác vì nó
+giữ lại nguyên si đường dẫn đến css, javascript, ảnh, v.v..
+Thậm chí IE còn lưu lại đường link của thiết kế gốc.
+	
+- Lưu vào thư mục: 	 
+	C:\xampp\htdocs\web_product\ui\adminlogin\c1710l_000
+với tên: layout-adminlogin
+- Kiểm thử bản thiết kế tĩnh: 
+	http://localhost:81/ui/adminlogin/c1710l_000/layout-adminlogin.htm
+sẽ thấy bị lỗi ảnh nền (background image) và vỡ icon của bootstrap.
+
+- Dùng tính năng kiểm tra thẻ html của Chrome hoặc Firefox
+để điều tra đường dẫn gốc của ảnh nền và các ảnh khác
+Ví Dụ: khi mở file css: 
+	http://www.bootstrapzen.com/wp-content/uploads/433/preview/assets/css/styles.css
+sẽ thấy có đoạn mã;
+	background: url(../images/bg.jpg)
+thì chúng ta sẽ phải tạo thêm thư mục:
+	C:\xampp\htdocs\web_product\ui\adminlogin\c1710l_000\images
+vào lưu ảnh sau đây vào thư mục 'images' đó:
+	http://www.bootstrapzen.com/wp-content/uploads/433/preview/assets/images/bg.jpg
+	
+- Dùng tính năng kiểm tra thẻ html của Chrome hoặc Firefox
+để điều tra đường dẫn gốc của các bộ font cho thư viện bootstrap:
+ví dụ: khi mở file:
+	http://www.bootstrapzen.com/wp-content/uploads/433/preview/assets/bootstrap/css/bootstrap.min.css	
+chúng ta sẽ thấy có đoạn mã:
+	@font-face {
+		font-family: Glyphicons Halflings;
+		src: url(../fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"), url(../fonts/glyphicons-halflings-regular.woff) format("woff"), url(../fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");
+	}
+chứng tỏ còn thiếu thư mục 'fonts' cho bộ giao diện này.
+Chúng ta có thể copy từ một bộ theme có sẵn thư viện 'fonts'	
+
+- Tạo ra file 'layout-adminlogin.php' từ 'layout-adminlogin.html'
+(copy và đổi tên)
+- Dùng công cụ html beautifier trực tuyến để làm đẹp mã nguồn:
+	https://www.freeformatter.com/html-formatter.html
+- Kiểm thử giao diện php của trang đăng nhập quản trị:
+	http://localhost:81/admin-login.php	
+- Sẽ thấy bị lỗi css,html. Cách khắc phục:
+Sửa đường dẫn tương đối thành bán tuyệt đối (dùng tổ hợp phím Ctrl+F) của Eclipse
+	"layout-adminlogin_files => "/ui/adminlogin/c1710l_000/layout-adminlogin_files	
+
+- Bổ sung nội dung động PHP cho layout-adminlogin.php
+<!DOCTYPE HTML><?php include_once $_SERVER["DOCUMENT_ROOT"].'/configs.php'; ?>
+
+<TITLE><?php echo $web_title;?></TITLE>
+<link href="<?php echo web_icon_url(); ?>" rel="icon">
+
+<FORM action="/admin-login.php" method="post">
+            <?php if ($_SESSION["ERROR_TEXT"]) { ?>
+		             <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $_SESSION["ERROR_TEXT"]; ?>
+		               <button type="button" class="close" data-dismiss="alert">&times;</button>
+		             </div>
+		             <?php } $_SESSION["ERROR_TEXT"] = null; ?>
+		             
+                  <INPUT name="username" type="text" value="<?php echo $_SESSION['FAILED_USERNAME'];?>">
+                  				 
+               <INPUT name="password"  type="password" value="<?php echo $_SESSION['FAILED_PASSWORD'];?>"> 
+               <BUTTON name="go" class="btn btn-primary btn-block" type="submit">Login Now</BUTTON>
+                
+            </FORM>	
+	

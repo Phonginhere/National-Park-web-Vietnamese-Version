@@ -1,0 +1,13 @@
+Thiết kế flat và material đều là thuộc phong cách tối giản minimalism,
+có điều là flat ko có hiệu ứng đổ bóng râm, và hoạt họa nhiều như material.
+
+Mọi thứ đều là 2D.
+
+Tất nhiên bạn có thể sử dụng ảnh nền trong thiết kế phẳng Flat, đặc biệt
+là các ảnh mờ (blur background-image)
+---------
+Chú Ý: 
+Nên Chọn mẫu Responsive cho cả 2 phong cách.
+
+https://colorlib.com/etc/lf/Login_v18/index.html
+https://uicookies.com/free-bootstrap-login-forms/

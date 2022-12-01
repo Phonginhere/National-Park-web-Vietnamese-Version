@@ -1,0 +1,7 @@
+slide show chi tiết ảnh sản phẩm:
+magnific, fancybox
+
+zoom chi tiết ảnh sản phẩm:
+elevatezoom	http://www.elevateweb.co.uk/image-zoom
+
+dùng cái nào cho nó đồng nhất bây giờ ???

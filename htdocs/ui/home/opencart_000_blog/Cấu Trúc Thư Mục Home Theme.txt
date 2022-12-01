@@ -1,0 +1,18 @@
+/ui/home/theme/font
+              /fonts
+              /image
+              /images
+              /js
+              /template_files
+              /view
+              layout.php
+              template.htm
+-----------------------------------
+Giải Thích:
+font, fonts là các thư mục chứa phông chữ cho thư viện bootstrap
+image, images là các thư mục chứa ảnh cho html sao chép về 
+js là thư mục javascript cho giao diện sao chép về
+template_files là thư mục chứa học liệu của html sao chép về
+view là thư mục chứa khung nhìn (web content) của các trang php
+layout.php là bố cục chung (dạng động php) của trang chủ
+template.htm là bố cục chung dạng tĩnh html của trang chủ             
